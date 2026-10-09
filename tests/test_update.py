@@ -94,14 +94,18 @@ class ReportTests(unittest.TestCase):
 
 
     def test_private_name_overrides_take_precedence(self):
-        data={'123@s.whatsapp.net':{'name':'Original Name','individual':True,'messages':{'1':message('2014-01-01T12:00:00+01:00','stable')}}}
+        data={'123@s.whatsapp.net':{'name':'Original Name','individual':True,'messages':{'1':message('2014-01-01T12:00:00+01:00','stable')}},
+              '456@s.whatsapp.net':{'name':'Private Name','individual':True,'messages':{'2':message('2014-02-01T12:00:00+01:00','stable-2')}}}
         with tempfile.TemporaryDirectory() as td:
             root=pathlib.Path(td)
             (root/'name_overrides.json').write_text('{"123@s.whatsapp.net":"Shared Name"}',encoding='utf-8')
             (root/'name_overrides.local.json').write_text('{"123@s.whatsapp.net":"Private Name"}',encoding='utf-8')
             with mock.patch.object(u,'ROOT',root):
                 report=u.make_report(data,2014,2014)
-        self.assertEqual(report['years']['2014']['ranking'][0]['name'],'Private Name')
+        rows=[r for r in report['years']['2014']['ranking'] if r['name']=='Private Name']
+        self.assertEqual(len(rows),1)
+        self.assertEqual(rows[0]['total'],2)
+        self.assertEqual(report['quality']['merged_duplicate_name_groups'],1)
 
     def test_movers_use_full_ranking_and_aliases_deduplicate(self):
         a = message('2014-01-01T12:00:00+01:00', 'a')

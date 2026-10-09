@@ -166,13 +166,13 @@ def contact_name_key(name):
     return value.casefold().strip(' .,!;:')
 
 
-def infer_duplicate_name_aliases(chats):
+def infer_duplicate_name_aliases(chats, name_overrides=None):
     """Merge exact duplicate, multi-word personal labels; keep single-word labels separate."""
     groups = collections.defaultdict(list)
     for jid, chat in chats.items():
         if not chat.get('individual'):
             continue
-        name = ' '.join(unicodedata.normalize('NFKC', str(chat.get('name') or '')).split())
+        name = ' '.join(unicodedata.normalize('NFKC', str((name_overrides or {}).get(jid) or chat.get('name') or '')).split())
         key = contact_name_key(name)
         words = re.findall(r'[^\W\d_]+', key, flags=re.UNICODE)
         if len(words) >= 2 and not any(ch.isdigit() for ch in name):
@@ -196,7 +196,7 @@ def make_report(chats, first_year, last_year, aliases=None):
     local_override_path = ROOT / 'name_overrides.local.json'
     if local_override_path.is_file():
         name_overrides.update(json.loads(local_override_path.read_text(encoding='utf-8')))
-    inferred_aliases, duplicate_name_groups, name_merge_groups = infer_duplicate_name_aliases(chats)
+    inferred_aliases, duplicate_name_groups, name_merge_groups = infer_duplicate_name_aliases(chats, name_overrides)
     effective_aliases = dict(inferred_aliases)
     effective_aliases.update(aliases)
     def canonical_jid(jid):
