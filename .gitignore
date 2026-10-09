@@ -1,0 +1,23 @@
+.venv/
+data/
+archive/
+report/
+__pycache__/
+*.py[cod]
+
+# Private contact-name mappings
+name_overrides.local.json
+
+# Raw WhatsApp/iPhone data, even if accidentally placed at the project root
+ChatStorage.sqlite
+iphone.json
+chats.json
+*.sqlite
+*.sqlite-*
+*.db
+*.log
+html/
+txt/
+media/
+Media/
+.DS_Store

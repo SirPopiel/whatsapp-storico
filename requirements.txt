@@ -1,0 +1,1 @@
+whatsapp-chat-exporter==0.13.0

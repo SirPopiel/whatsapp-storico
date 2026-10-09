@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="it">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>WhatsApp · Il tuo storico</title>
+<style>
+:root{--bg:#0c141b;--panel:#14212b;--line:#283944;--text:#e6edf1;--muted:#94a7b4;--green:#66e5aa;--red:#ff8c93;--gold:#f2c977}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}main{max-width:1440px;margin:auto;padding:40px 34px 64px}header{display:flex;justify-content:space-between;align-items:center;gap:20px}.eyebrow{color:var(--green);font-size:12px;letter-spacing:2px;text-transform:uppercase}h1{font-size:40px;letter-spacing:-1.5px;margin:8px 0}h2{font-size:20px;margin:0}p{color:var(--muted)}a{color:var(--green)}.button,select,input,button{background:var(--panel);color:var(--text);border:1px solid var(--line);padding:12px;border-radius:8px;font:inherit}.button{text-decoration:none;display:inline-block}button{cursor:pointer}.source{font-size:12px;border:1px solid var(--line);padding:12px 16px;border-radius:8px;color:var(--muted);max-width:530px}.timeline{margin:26px 0;padding:24px;background:linear-gradient(110deg,#18342b,#18252e);border:1px solid var(--line);border-radius:14px;display:grid;grid-template-columns:auto minmax(180px,1fr) auto auto;align-items:center;gap:25px}.year{font-size:44px;font-weight:700;color:var(--green);line-height:1}.timeline input{width:100%;accent-color:var(--green);padding:0}.timeline label{display:block;color:var(--muted);font-size:12px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card,.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px}.label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}.value{font-size:30px;font-weight:650;margin:8px 0}.sub{font-size:12px;color:var(--muted)}.grid{display:grid;grid-template-columns:1.8fr 1fr;gap:18px;margin-top:18px}.panel-title{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:20px}.panel-title input{max-width:230px}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:13px}th{text-align:left;color:var(--muted);font-size:11px;font-weight:500;white-space:nowrap}th,td{padding:13px 8px;border-bottom:1px solid var(--line)}td.num,th.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}td.name{max-width:240px;overflow-wrap:anywhere}.rank{color:var(--muted)}.up{color:var(--green)}.down{color:var(--red)}.new{color:var(--gold)}.bar{height:3px;background:var(--green);border-radius:3px;margin-top:7px;opacity:.6}.side{display:grid;gap:18px;align-content:start}.list{list-style:none;padding:0;margin:15px 0 0}.list li{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:13px}.list span:first-child{max-width:75%;overflow-wrap:anywhere}.chart{width:100%;height:185px;display:flex;gap:7px;align-items:flex-end;margin:20px 0 4px}.col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;min-width:0}.col i{display:block;width:85%;background:#3a7463;border-radius:4px 4px 0 0;min-height:1px}.col.active i{background:var(--green)}.col span{font-size:10px;color:var(--muted);margin-top:7px}.trend-plot{width:100%;height:300px;display:block;margin-top:10px;overflow:visible}.trend-line{fill:none;stroke:var(--green);stroke-width:3;stroke-linejoin:round;stroke-linecap:round}.trend-area{fill:url(#trendFill)}.trend-grid{stroke:var(--line);stroke-width:1}.trend-axis{fill:var(--muted);font-size:12px}.trend-dot{fill:var(--green);stroke:var(--panel);stroke-width:2}.plot-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.plot-head select{padding:8px}.plot-note{min-height:18px;margin-top:8px}.collapsible>summary{list-style:none}.collapsible>summary::-webkit-details-marker{display:none}.panel-summary{display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer}.panel-summary>span{white-space:nowrap}.panel-summary::after{content:"−";font-size:22px;color:var(--green);margin-left:10px}.collapsible:not([open])>.panel-summary::after{content:"+"}.collapsible-content{margin-top:16px}.series-picker{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:5px;max-height:250px;overflow:auto;border:1px solid var(--line);border-radius:8px;padding:10px}.series-picker label{display:flex;align-items:center;gap:8px;font-size:13px}.series-picker input{padding:0;accent-color:var(--green)}.series-toggles{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 12px;max-height:100px;overflow:auto;padding:6px;border:1px solid var(--line);border-radius:9px;background:#0f1a22}.series-toggle{border-radius:999px;padding:5px 9px;font-size:11px;opacity:.55;white-space:nowrap}.series-toggle.active{opacity:1;border-color:var(--series-color);background:#1c3830}.series-toggle::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;background:var(--series-color)}.plot-controls>div:last-child{display:flex;gap:12px;flex-wrap:wrap}.method{margin-top:30px;border-top:1px solid var(--line);padding-top:20px;color:var(--muted);font-size:12px}summary{cursor:pointer;color:var(--text)}.empty{color:var(--muted);padding:12px 0}.footer-links{display:flex;gap:15px;flex-wrap:wrap;font-size:13px}.badge{font-size:10px;border:1px solid var(--line);border-radius:4px;padding:3px;color:var(--gold)}@media(max-width:1000px){.grid{grid-template-columns:1fr}.side{grid-template-columns:1fr 1fr}.cards{grid-template-columns:1fr 1fr}header{align-items:flex-start;flex-direction:column}}@media(max-width:600px){main{padding:24px 14px}h1{font-size:32px}.side{grid-template-columns:1fr}.timeline{grid-template-columns:auto 1fr;gap:16px}.timeline .cutoff{grid-column:1/-1}.panel-title{align-items:flex-start;flex-direction:column}.panel-title input{max-width:100%;width:100%}.card{padding:15px}.value{font-size:26px}.panel{padding:15px}.trend-plot{height:230px}.plot-head{align-items:flex-start;flex-direction:column}}
+</style></head>
+<body><main>
+<header><div><div class="eyebrow">Archivio personale · elaborato in locale</div><h1>Le persone, nel tempo.</h1><p>Messaggi e classifiche top 50 delle conversazioni individuali.</p></div><div class="source" id="source"></div></header>
+<div class="source" id="coverage" style="margin-top:20px;max-width:none;border-color:#766340;color:#f2c977"></div>
+<section class="timeline"><div><label for="year">Anno fino a</label><div class="year" id="yearLabel"></div></div><div><input id="year" type="range" aria-label="Anno finale della classifica"><div class="sub">Scegli il periodo e scorri fino all’anno da confrontare</div></div><div><label for="startYear">Dal</label><select id="startYear" aria-label="Anno iniziale"></select></div><div class="cutoff"><strong id="cutoff"></strong><div class="sub" id="partial"></div></div></section>
+<div class="cards"><div class="card"><div class="label">Messaggi nel periodo</div><div class="value" id="total"></div><div class="sub" id="directions"></div></div><div class="card"><div class="label">Messaggi nell’anno</div><div class="value" id="annual"></div><div class="sub" id="annualChange"></div></div><div class="card"><div class="label">Conversazioni individuali</div><div class="value" id="contacts"></div><div class="sub" id="activeContacts"></div></div><div class="card"><div class="label">Quota della top 50</div><div class="value" id="share"></div><div class="sub">Sul totale individuale nel periodo selezionato</div></div></div>
+<details class="panel collapsible" style="margin-top:18px" open><summary class="panel-summary"><div><h2>Messaggi nel tempo</h2><div class="sub">Volume totale mensile delle chat individuali</div></div><span class="sub">Apri o minimizza</span></summary><div class="collapsible-content"><div class="plot-head plot-controls"><label class="sub">Intervallo <select id="plotMode" aria-label="Granularità del grafico"><option value="monthly">Mensile</option><option value="annual">Annuale</option></select></label></div><svg id="trend" class="trend-plot" viewBox="0 0 1100 300" role="img" aria-label="Grafico dei messaggi nel tempo"></svg><div id="plotNote" class="sub plot-note"></div></div></details>
+<details class="panel collapsible" style="margin-top:18px" open><summary class="panel-summary"><div><h2>La classifica nel tempo</h2><div class="sub">Recap storico: segui come cambiano volumi e posizioni delle chat selezionate</div></div><span class="sub">Apri o minimizza</span></summary><div class="collapsible-content"><div class="plot-head plot-controls"><div class="sub">Scegli il numero di serie e la misura da seguire</div><div><label class="sub">Mostra Top <select id="historyTopX" aria-label="Numero di chat nella top storica"><option>5</option><option selected>10</option><option>20</option><option>30</option><option>50</option></select></label> <label class="sub">Misura <select id="historyMode" aria-label="Misura della serie storica"><option value="cumulative">Messaggi cumulativi</option><option value="annual">Messaggi nell’anno</option><option value="rank">Posizione cumulativa</option><option value="rank-annual">Posizione nell’anno</option></select></label></div></div><details style="margin-top:14px"><summary>Seleziona altre chat già entrate in Top 50</summary><div class="plot-head" style="margin:12px 0"><input id="seriesSearch" placeholder="Cerca una persona o chat" aria-label="Cerca chat per il grafico storico"><button id="seriesAuto" type="button">Usa Top X automatiche</button></div><div id="seriesPicker" class="series-picker"></div><div class="sub">Il selettore contiene solo chat entrate almeno una volta nella top 50 cumulativa o annuale; massimo 50 linee contemporaneamente. In modalità posizione, il primo posto è in alto; i messaggi di ciascun anno restano separati dalla serie cumulativa.</div></details><svg id="historyPlot" class="trend-plot" viewBox="0 0 1100 350" role="img" aria-label="Evoluzione di top X chat nel tempo"></svg><div class="sub" style="margin-top:8px">Top X suggerita · clicca un nome per attivare o togliere la linea</div><div id="historyToggles" class="series-toggles"></div><div id="historyNote" class="sub plot-note"></div></div></details>
+<div class="grid"><section class="panel"><div class="panel-title"><div><h2 id="rankingTitle">Top 50</h2><div class="sub">Classifica per messaggi totali oppure solo nell’anno selezionato</div></div><select id="mode" aria-label="Ordina classifica per"><option value="cumulative">Totale storico</option><option value="annual">Messaggi nell’anno</option></select><input id="search" placeholder="Cerca nome o identificativo" aria-label="Filtra la top 50"></div><div class="tablewrap"><table><thead><tr><th>#</th><th>Conversazione</th><th class="num">Totale</th><th class="num">Nell’anno</th><th class="num">Inviati</th><th class="num">Ricevuti</th><th class="num">Δ cumulativa</th></tr></thead><tbody id="ranking"></tbody></table></div><div class="sub" style="margin-top:15px">Δ positivo = salita rispetto alla classifica cumulativa dell’anno precedente. “Nuova” = nessun messaggio precedente.</div></section>
+<aside class="side"><section class="panel"><h2>Ritmo annuale</h2><div class="chart" id="chart"></div><div class="sub">Messaggi individuali per anno · clicca una barra</div></section><section class="panel"><h2>Chi sale</h2><ul class="list" id="risers"></ul></section><section class="panel"><h2>Chi scende</h2><ul class="list" id="fallers"></ul></section><section class="panel"><h2>Più messaggi nell’anno</h2><ul class="list" id="volume"></ul></section><section class="panel"><h2>Più crescita di volume</h2><ul class="list" id="growth"></ul><div class="sub" style="margin-top:12px">Incremento assoluto dei messaggi annui sull’anno precedente</div></section><section class="panel"><h2>Ingressi nella top 50</h2><ul class="list" id="entrants"></ul></section><section class="panel"><h2>Uscite dalla top 50</h2><ul class="list" id="exits"></ul></section></aside></div>
+<div class="method"><div class="footer-links"><a href="top50_2014-oggi.csv">Scarica top 50 cumulative CSV</a><a href="top50_solo_anno.csv">Top 50 nell’anno CSV</a><a href="classifiche_complete.csv">Tutte le posizioni CSV</a><a href="nomi_unificati.csv">Chat unite per nome</a><a href="statistiche.json">Statistiche JSON</a><a href="top50_annuali.md">Tutte le top 50 in testo</a><a href="../data/latest-iphone.json">Riferimento al confronto iPhone/Mac</a><a href="../archive/index.html">Consulta le conversazioni</a></div><details style="margin-top:20px"><summary>Come leggere questi numeri</summary><p>Ogni anno è una fotografia al 31 dicembre, nell’ora Europe/Madrid, oppure fino all’ultima data disponibile. Per la classifica cumulativa puoi selezionare l’anno iniziale con “Dal”. Il conteggio considera ogni messaggio come un’unità senza analizzarne il testo o gli allegati; esclude eventi di sistema, gruppi, canali, broadcast e stati. La colonna “Nell’anno” è il volume del solo anno selezionato. I nomi sono quelli disponibili oggi e possono differire dai nomi storici.</p><p>Chi sale/scende: variazioni di posizione sull’intera classifica, limitate alle conversazioni nella top 50 di almeno uno dei due anni. I nuovi interlocutori sono mostrati negli ingressi. I pareggi sono ordinati per identificativo stabile. Gli identificativi LID senza collegamento certo restano separati, salvo nomi completi uguali di almeno due parole. Le etichette brevi o ambigue non vengono unite automaticamente.</p><p>L’archivio locale conserva messaggi dei precedenti aggiornamenti. Le fotografie storiche rappresentano i messaggi sopravvissuti e acquisiti: non ricostruiscono messaggi già eliminati prima della prima estrazione. L’ultimo anno è parziale e il confronto di volume con l’anno precedente può risentirne. Il grafico e le classifiche contano i messaggi, senza analizzare gli allegati.</p><p id="quality"></p></details></div>
+</main>
+<script id="data" type="application/json">__REPORT_DATA__</script>
+<script>
+'use strict';
+const DATA=JSON.parse(document.getElementById('data').textContent), YEARS=Object.keys(DATA.years).map(Number), minYear=Math.min(...YEARS), $=id=>document.getElementById(id), fmt=n=>new Intl.NumberFormat('it-IT').format(n), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+$('year').min=Math.min(...YEARS);$('year').max=Math.max(...YEARS);$('year').value=Math.max(...YEARS);
+$('source').textContent=`Fonte: ${DATA.source.kind==='iphone+mac_stable'?'backup iPhone + integrazioni Mac con ID stabile':DATA.source.kind==='desktop'?'database WhatsApp del Mac':DATA.source.kind==='backup'?'backup iPhone Finder':'JSON WhatsApp Chat Exporter'} · Ultimo messaggio: ${new Date(DATA.last_message).toLocaleString('it-IT',{timeZone:DATA.timezone})}`;
+$('coverage').textContent=DATA.source.comparison_completed?`Backup iPhone verificato e confrontato con il Mac. Primi messaggi individuali conservati: ${new Date(DATA.first_individual_message).toLocaleDateString('it-IT',{timeZone:DATA.timezone})}. Integrazioni dal Mac solo con identificativi stabili; anni assenti nella fonte non ricostruibili.`:`Report Mac provvisorio. Primi messaggi individuali dal ${new Date(DATA.first_individual_message).toLocaleDateString('it-IT',{timeZone:DATA.timezone})}. Le classifiche definitive attendono l’estrazione e il confronto del backup iPhone.`;
+$('quality').textContent=`Archivio: ${fmt(DATA.archive_records)} record. Chat LID senza mappatura esplicita: ${DATA.quality.unmapped_lid_chats||0}. La copertura del backup iPhone non è certificata se la fonte è il database Mac.`;
+function list(id,rows,label){$(id).innerHTML=rows.length?rows.map(r=>`<li><span>${esc(r.name)}</span><strong>${esc(label(r))}</strong></li>`).join(''):'<li class="empty">Nessuno</li>';}
+function plotData(){
+ const start=Number($('startYear').value),end=Number($('year').value);
+ if($('plotMode').value==='annual')return YEARS.filter(y=>y>=start&&y<=end).map(y=>({label:String(y),total:DATA.years[y].stats.annual}));
+ const byMonth=new Map((DATA.monthly_messages||[]).map(r=>[r.month,r.total]));
+ const keys=[...byMonth.keys()].filter(k=>Number(k.slice(0,4))>=start&&Number(k.slice(0,4))<=end).sort();
+ if(!keys.length)return [];
+ const first=keys[0],last=keys.at(-1),out=[];
+ let [y,m]=first.split('-').map(Number),[ey,em]=last.split('-').map(Number);
+ while(y<ey||(y===ey&&m<=em)){const key=String(y)+'-'+String(m).padStart(2,'0');out.push({label:key,total:byMonth.get(key)||0});m++;if(m===13){m=1;y++;}}
+ return out;
+}
+function drawPlot(){
+ const rows=plotData(),svg=$('trend'),W=1100,H=300,L=68,R=18,T=18,B=42,w=W-L-R,h=H-T-B,max=Math.max(1,...rows.map(x=>x.total)),n=Math.max(1,rows.length-1);
+ if(!rows.length){svg.innerHTML='';$('plotNote').textContent='Nessun dato disponibile';return;}
+ const x=i=>L+i*w/n,y=v=>T+h-(v/max)*h,fmtTick=v=>fmt(Math.round(v));
+ let markup='<defs><linearGradient id="trendFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#66e5aa" stop-opacity=".28"/><stop offset="1" stop-color="#66e5aa" stop-opacity="0"/></linearGradient></defs>';
+ for(let k=0;k<=4;k++){const v=max*k/4,yy=y(v);markup+=`<line class="trend-grid" x1="${L}" x2="${W-R}" y1="${yy}" y2="${yy}"/><text class="trend-axis" x="${L-10}" y="${yy+4}" text-anchor="end">${fmtTick(v)}</text>`;}
+ const coords=rows.map((r,i)=>[x(i),y(r.total)]),line=coords.map((p,i)=>`${i?'L':'M'}${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(' '),area=`${line} L${x(rows.length-1)},${T+h} L${L},${T+h} Z`;
+ markup+=`<path class="trend-area" d="${area}"/><path class="trend-line" d="${line}"/>`;
+ const step=Math.max(1,Math.ceil(rows.length/12));
+ rows.forEach((r,i)=>{const [xx,yy]=coords[i],label=r.label.length===7?new Date(`${r.label}-15T12:00:00`).toLocaleDateString('it-IT',{month:'short',year:'numeric',timeZone:DATA.timezone}):r.label;if(i%step===0||i===rows.length-1)markup+=`<text class="trend-axis" x="${xx}" y="${H-12}" text-anchor="middle">${esc(label)}</text>`;markup+=`<circle class="trend-dot" cx="${xx}" cy="${yy}" r="${rows.length>100?2.3:4}"><title>${esc(label)}: ${fmt(r.total)} messaggi</title></circle>`;});
+ svg.innerHTML=markup;
+ const total=rows.reduce((a,r)=>a+r.total,0),avg=Math.round(total/rows.length),peak=rows.reduce((a,b)=>a.total>b.total?a:b);
+ $('plotNote').textContent=`${fmt(total)} messaggi · media ${fmt(avg)} per ${$('plotMode').value==='annual'?'anno':'mese'} · picco ${peak.label}: ${fmt(peak.total)}`;
+}
+
+let historyManual=false,historySelected=new Set();
+const seriesYears=DATA.series_years||[],allChatSeries=DATA.chat_series||[],everTop50=new Set(Object.values(DATA.years).flatMap(item=>[...(item.top50||[]),...(item.annual_top50||[])].map(row=>row.jid))),chatSeries=allChatSeries.filter(row=>everTop50.has(row.jid));
+function historyValues(row,start,end,mode){
+ const vals=[];let sum=0;
+ for(let y=start;y<=end;y++){
+  const i=seriesYears.indexOf(y),v=i<0?0:(row.annual[i]||0);sum+=v;vals.push(mode==='annual'?v:sum);
+ }
+ return vals;
+}
+function historyRanking(end,start,mode){
+ const rankMode=mode==='rank'||mode==='rank-annual',annual=mode==='annual'||mode==='rank-annual',source=rankMode?allChatSeries:chatSeries;let rows=source.map(row=>({row,values:historyValues(row,start,end,annual?'annual':'cumulative')}));
+ if(rankMode){
+  for(let k=0;k<(rows[0]?.values.length||0);k++){
+   const order=rows.filter(entry=>entry.values[k]>0).sort((a,b)=>b.values[k]-a.values[k]||a.row.jid.localeCompare(b.row.jid));
+   order.forEach((entry,index)=>{entry.values[k]=index+1;});rows.filter(entry=>entry.values[k]===0).forEach(entry=>{entry.values[k]=null;});
+  }
+  rows=rows.filter(entry=>entry.values.at(-1)!==null);rows.sort((a,b)=>a.values.at(-1)-b.values.at(-1)||a.row.name.localeCompare(b.row.name,'it'));
+ }else {rows=rows.filter(entry=>entry.values.at(-1)>0);rows.sort((a,b)=>b.values.at(-1)-a.values.at(-1)||a.row.name.localeCompare(b.row.name,'it'));}
+ return rows;
+}
+function historyDefaults(){
+ const start=Number($('startYear').value)||Math.min(...seriesYears),end=Number($('year').value),mode=$('historyMode').value;
+ return historyRanking(end,start,mode).slice(0,Number($('historyTopX').value)).map(x=>x.row.jid);
+}
+function renderSeriesPicker(ranked){
+ const query=$('seriesSearch').value.trim().toLocaleLowerCase('it'),topIds=new Set(ranked.filter(x=>everTop50.has(x.row.jid)).slice(0,Math.min(Number($('historyTopX').value),50)).map(x=>x.row.jid));
+ const order=new Map(ranked.map((x,i)=>[x.row.jid,i]));let rows=chatSeries.filter(x=>x.name.toLocaleLowerCase('it').includes(query)||x.jid.toLocaleLowerCase('it').includes(query)||historySelected.has(x.jid)||topIds.has(x.jid));
+ rows.sort((a,b)=>(order.get(a.jid)??Infinity)-(order.get(b.jid)??Infinity));
+ $('seriesPicker').innerHTML=rows.map(x=>'<label><input type="checkbox" data-series="'+esc(x.jid)+'" '+(historySelected.has(x.jid)?'checked':'')+'><span>'+esc(x.name)+'</span></label>').join('')||'<span class="empty">Nessuna chat trovata.</span>';
+}
+function drawHistory(){
+ const start=Number($('startYear').value)||Math.min(...seriesYears),end=Number($('year').value),mode=$('historyMode').value,limit=Number($('historyTopX').value);
+ const ranked=historyRanking(end,start,mode),defaultRows=ranked.filter(x=>everTop50.has(x.row.jid)).slice(0,Math.min(limit,50));if(!historyManual)historySelected=new Set(defaultRows.map(x=>x.row.jid));
+ renderSeriesPicker(ranked);
+ const chosen=ranked.filter(x=>historySelected.has(x.row.jid)),svg=$('historyPlot'),toggleRows=[...defaultRows,...chosen.filter(x=>!defaultRows.some(d=>d.row.jid===x.row.jid))],colorFor=ix=>'hsl('+((ix*137.508)%360)+',72%,68%)';
+ $('historyToggles').innerHTML=toggleRows.map((x,i)=>'<button type="button" class="series-toggle '+(historySelected.has(x.row.jid)?'active':'')+'" style="--series-color:'+colorFor(Math.max(0,chosen.findIndex(c=>c.row.jid===x.row.jid)>=0?chosen.findIndex(c=>c.row.jid===x.row.jid):defaultRows.findIndex(d=>d.row.jid===x.row.jid)))+'" data-toggle-series="'+esc(x.row.jid)+'" aria-pressed="'+historySelected.has(x.row.jid)+'">'+esc(x.row.name)+'</button>').join('');
+ if(!chosen.length){svg.innerHTML='';$('historyNote').textContent='Attiva una o più chat dai nomi qui sopra per mostrare lo storico.';return;}
+ const years=seriesYears.filter(y=>y>=start&&y<=end),W=1100,H=350,L=75,R=25,T=24,B=42,w=W-L-R,h=H-T-B,n=Math.max(1,years.length-1),rankMode=mode.startsWith('rank');
+ const selectedRanks=rankMode?chosen.flatMap(x=>x.values.filter(v=>v!==null)):[0,...chosen.flatMap(x=>x.values)],low=rankMode?Math.min(...selectedRanks):0,high=rankMode?Math.max(...selectedRanks):Math.max(1,...selectedRanks),x=i=>L+i*w/n,y=v=>rankMode?T+(v-low)/(high-low||1)*h:T+h-v/(high||1)*h;
+ let markup='';
+ const ticks=rankMode?[...new Set([low,Math.round((low+high)/2),high])]:[0,1,2,3,4].map(k=>high*k/4);
+ for(const v of ticks){const yy=y(v),shown=rankMode?'#'+Math.round(v):fmt(v);markup+='<line class="trend-grid" x1="'+L+'" x2="'+(W-R)+'" y1="'+yy+'" y2="'+yy+'"/><text class="trend-axis" x="'+(L-10)+'" y="'+(yy+4)+'" text-anchor="end">'+shown+'</text>';}
+ chosen.forEach((entry,ix)=>{const vals=entry.values,color=colorFor(ix),coords=vals.map((v,i)=>v===null?null:{point:[x(i),y(v)],index:i,value:v}).filter(Boolean),path=coords.map((o,i)=>(i?'L':'M')+o.point[0].toFixed(1)+','+o.point[1].toFixed(1)).join(' ');if(path)markup+='<path d="'+path+'" fill="none" stroke="'+color+'" stroke-width="'+(chosen.length>20?'1.5':chosen.length>10?'2':'3')+'" opacity=".88" stroke-linejoin="round" stroke-linecap="round"/>';coords.forEach(o=>{markup+='<circle cx="'+o.point[0]+'" cy="'+o.point[1]+'" r="'+(chosen.length>20?'2.2':'4')+'" fill="'+color+'" stroke="#14212b" stroke-width="2"><title>'+esc(entry.row.name)+' · '+years[o.index]+': '+(rankMode?'#'+o.value:fmt(o.value)+' messaggi')+'</title></circle>';});});
+ const step=Math.max(1,Math.ceil(years.length/12));years.forEach((yr,i)=>{if(i%step===0||i===years.length-1)markup+='<text class="trend-axis" x="'+x(i)+'" y="'+(H-12)+'" text-anchor="middle">'+yr+'</text>';});svg.innerHTML=markup;
+ const annualMode=mode==='annual'||mode==='rank-annual',label=rankMode?(annualMode?'posizione nella classifica annuale':'posizione nella classifica cumulativa'):annualMode?'messaggi di quell’anno':'messaggi cumulativi dal '+start;
+ $('historyNote').textContent='Top '+limit+' al '+end+' · '+chosen.length+' serie · '+label+'. '+(rankMode?'Scala adattata alla posizione migliore raggiunta dalle serie selezionate; #1 è in alto.':'');
+}
+function rowsInWindow(end,start){
+ const byId=new Map();
+ for(let yr=start;yr<=end;yr++){
+  const item=DATA.years[yr];if(!item)continue;
+  for(const src of item.ranking){
+   if(!src.annual)continue;
+   let row=byId.get(src.jid);
+   if(!row){row={jid:src.jid,name:src.name,total:0,sent:0,received:0,annual:0,annual_sent:0,annual_received:0,annual_change:src.annual_change,annual_growth_pct:src.annual_growth_pct};byId.set(src.jid,row);}
+   row.name=src.name;row.total+=src.annual;row.sent+=src.annual_sent;row.received+=src.annual_received;
+   if(yr===end){row.annual=src.annual;row.annual_sent=src.annual_sent;row.annual_received=src.annual_received;row.annual_change=src.annual_change;row.annual_growth_pct=src.annual_growth_pct;}
+  }
+ }
+ const rows=[...byId.values()].sort((a,b)=>b.total-a.total||a.jid.localeCompare(b.jid));
+ rows.forEach((r,i)=>r.rank=i+1);return rows;
+}
+function syncStartOptions(){
+ const end=Number($('year').value),old=Number($('startYear').value)||minYear,available=YEARS.filter(y=>y<=end);
+ $('startYear').innerHTML=available.map(y=>'<option value="'+y+'">'+y+'</option>').join('');
+ $('startYear').value=String(Math.min(old,end));
+}
+function draw(){
+ syncStartOptions();drawPlot();drawHistory();
+ const y=Number($('year').value),start=Number($('startYear').value),item=DATA.years[y],s=item.stats;
+ const rowsInRange=rowsInWindow(y,start),priorRows=y>start?rowsInWindow(y-1,start):[],priorMap=new Map(priorRows.map(r=>[r.jid,r]));
+ for(const r of rowsInRange){
+  const old=priorMap.get(r.jid);r.previous_rank=old?old.rank:null;r.rank_change=old?old.rank-r.rank:null;
+  r.new_chat=!old&&start===minYear;r.entered_top50=r.rank<=50&&(!old||old.rank>50);
+ }
+ const annualMode=$('mode').value==='annual',selected=annualMode?item.annual_top50:rowsInRange.slice(0,50);
+ const q=$('search').value.toLocaleLowerCase('it'),shown=selected.filter(r=>(r.name+' '+r.jid).toLocaleLowerCase('it').includes(q));
+ const periodTotal=rowsInRange.reduce((n,r)=>n+r.total,0),periodSent=rowsInRange.reduce((n,r)=>n+r.sent,0),periodReceived=rowsInRange.reduce((n,r)=>n+r.received,0);
+ $('yearLabel').textContent=y;$('cutoff').textContent=item.as_of?'Al '+new Date(item.as_of).toLocaleDateString('it-IT',{timeZone:DATA.timezone}):'Nessun dato';
+ $('partial').textContent=item.data_missing?'Storico individuale assente nella fonte':item.partial?'Periodo parziale · ultima data disponibile':'Chiusura dell’anno · dati conservati';
+ $('total').textContent=fmt(periodTotal);$('annual').textContent=fmt(s.annual);$('contacts').textContent=fmt(rowsInRange.length);
+ const share=periodTotal?rowsInRange.slice(0,50).reduce((n,r)=>n+r.total,0)/periodTotal*100:0;$('share').textContent=share.toFixed(1)+'%';
+ $('directions').textContent=fmt(periodSent)+' inviati · '+fmt(periodReceived)+' ricevuti';
+ $('activeContacts').textContent=fmt(s.active_contacts)+' attive nell’anno · dal '+start;
+ const previousAnnual=y>start?DATA.years[y-1].stats.annual:null;
+ $('annualChange').textContent=previousAnnual!==null?((s.annual>=previousAnnual?'+':'')+fmt(s.annual-previousAnnual)+' rispetto al '+(y-1)+(item.partial?' · periodo non omogeneo':'')):'Primo anno del periodo';
+ $('rankingTitle').textContent='Top 50 '+(annualMode?'per messaggi nell’anno':'per totale nel periodo')+' · '+y;
+ const max=annualMode?(selected[0]?selected[0].annual:1):(selected[0]?selected[0].total:1);
+ $('ranking').innerHTML=shown.map(r=>{
+  const total=annualMode?r.annual:r.total,sent=annualMode?r.annual_sent:r.sent,received=annualMode?r.annual_received:r.received;
+  const delta=annualMode?'—':r.rank_change===null?'—':r.rank_change===0?'—':(r.rank_change>0?'↑ ':'↓ ')+Math.abs(r.rank_change);
+  const rank=annualMode?r.annual_rank:r.rank,badge=r.entered_top50?'<span class="badge">Ingresso</span>':'';
+  return '<tr><td class="rank">'+rank+'</td><td class="name" title="'+esc(r.jid)+'">'+esc(r.name)+' '+badge+'<div class="bar" style="width:'+(total/max*100)+'%"></div></td><td class="num"><strong>'+fmt(total)+'</strong></td><td class="num">'+fmt(r.annual)+'</td><td class="num">'+fmt(sent)+'</td><td class="num">'+fmt(received)+'</td><td class="num">'+delta+'</td></tr>';
+ }).join('')||'<tr><td colspan="7">'+(item.data_missing?'Storico individuale non disponibile per questo anno.':'Nessuna conversazione corrispondente nella top 50.')+'</td></tr>';
+ const currentRanks=new Map(rowsInRange.map(r=>[r.jid,r.rank]));
+ const relevant=rowsInRange.filter(r=>r.rank<=50||(r.previous_rank&&r.previous_rank<=50));
+ list('risers',relevant.filter(r=>r.rank_change>0).sort((a,b)=>b.rank_change-a.rank_change).slice(0,5),r=>'↑ '+r.rank_change+' · #'+r.rank);
+ list('fallers',relevant.filter(r=>r.rank_change<0).sort((a,b)=>a.rank_change-b.rank_change).slice(0,5),r=>'↓ '+Math.abs(r.rank_change)+' · #'+r.rank);
+ list('volume',rowsInRange.filter(r=>r.annual>0).sort((a,b)=>b.annual-a.annual).slice(0,5),r=>fmt(r.annual));
+ list('growth',rowsInRange.filter(r=>r.annual_change>0).sort((a,b)=>b.annual_change-a.annual_change).slice(0,5),r=>'+'+fmt(r.annual_change));
+ list('entrants',rowsInRange.filter(r=>r.entered_top50).slice(0,50),r=>'#'+r.rank+(r.new_chat?' · Nuova':''));
+ list('exits',priorRows.filter(r=>r.rank<=50&&(currentRanks.get(r.jid)||999999)>50).map(r=>({...r,current_rank:currentRanks.get(r.jid)})),r=>'#'+r.rank+' → #'+r.current_rank);
+ const chartYears=YEARS.filter(v=>v>=start&&v<=y),peak=Math.max(1,...chartYears.map(v=>DATA.years[v].stats.annual));
+ $('chart').innerHTML=chartYears.map(v=>'<div class="col '+(v===y?'active':'')+'" data-year="'+v+'" title="'+v+': '+fmt(DATA.years[v].stats.annual)+' messaggi" role="button" tabindex="0" aria-label="Seleziona '+v+'"><i style="height:'+(DATA.years[v].stats.annual/peak*155)+'px"></i><span>'+String(v).slice(-2)+'</span></div>').join('');
+ $('chart').querySelectorAll('[data-year]').forEach(el=>{const select=()=>{$('year').value=el.dataset.year;draw()};el.onclick=select;el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select()}}});
+}
+$('year').addEventListener('input',draw);$('startYear').addEventListener('change',draw);$('search').addEventListener('input',draw);$('mode').addEventListener('change',draw);$('plotMode').addEventListener('change',drawPlot);$('historyTopX').addEventListener('change',()=>{if(!historyManual)draw();else drawHistory()});$('historyMode').addEventListener('change',()=>{if(!historyManual)draw();else drawHistory()});$('seriesSearch').addEventListener('input',renderSeriesPicker);$('seriesPicker').addEventListener('change',e=>{const input=e.target.closest('input[data-series]');if(!input)return;if(input.checked&&historySelected.size>=50){input.checked=false;$('historyNote').textContent='Massimo 50 serie nel grafico.';return;}if(input.checked)historySelected.add(input.dataset.series);else historySelected.delete(input.dataset.series);historyManual=true;drawHistory()});$('historyToggles').addEventListener('click',e=>{const btn=e.target.closest('button[data-toggle-series]');if(!btn)return;const jid=btn.dataset.toggleSeries;if(historySelected.has(jid))historySelected.delete(jid);else if(historySelected.size<50)historySelected.add(jid);else{$('historyNote').textContent='Massimo 50 serie nel grafico.';return;}historyManual=true;drawHistory()});$('seriesAuto').addEventListener('click',()=>{historyManual=false;draw()});draw();
+</script></body></html>
