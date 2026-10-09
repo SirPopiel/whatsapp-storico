@@ -26,6 +26,12 @@ Le istruzioni complete, inclusi i comandi Terminale e i permessi macOS, sono in 
 
 Il programma non ripiega automaticamente sul Mac. Usa WhatsApp Chat Exporter 0.13.0, non modifica il backup originale, conserva le estrazioni e lavora localmente. Le password dei backup cifrati si inseriscono solo nel prompt nascosto del Terminale. Nessuna automazione ricorrente è stata creata.
 
+La pipeline aggiorna anche la dashboard a ogni estrazione. Dopo modifiche grafiche, rigenerala dai dati statistici locali già salvati senza riestrarre l’iPhone:
+
+```bash
+python3 build_dashboard.py
+```
+
 ## Risultati dopo il confronto iPhone/Mac
 
 - `data/iphone-runs/<data-ora>/iphone.json`, `html/`, `txt/`: esportazione originale iPhone.
@@ -55,7 +61,7 @@ Aggiornamenti successivi dell’archivio: la chiave stabile evita doppioni e i m
 
 ## Codice
 
-`iphone_pipeline.py`: verifica, estrazione e confronto. `update.py`: consolidamento e statistiche. `dashboard.html`: template autonomo senza dipendenze web. [WhatsApp Chat Exporter](https://github.com/KnugiHK/WhatsApp-Chat-Exporter) è l’esportatore open source utilizzato.
+`iphone_pipeline.py`: verifica, estrazione e confronto. `update.py`: consolidamento e statistiche. `build_dashboard.py`: rigenera l’HTML dai dati statistici locali. `dashboard.html`: template autonomo senza dipendenze web. [WhatsApp Chat Exporter](https://github.com/KnugiHK/WhatsApp-Chat-Exporter) è l’esportatore open source utilizzato.
 
 ```bash
 python3 -m unittest discover -s tests -v
